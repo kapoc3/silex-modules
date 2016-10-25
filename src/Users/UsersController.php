@@ -20,12 +20,14 @@ class UsersController implements ControllerProviderInterface
 
       // obtiene el nombre de usuario de la sesión
       $user = $app['session']->get('user');
-
+      $users = $app['session']->get('users');
+      
       // ya ingreso un usuario ?
       if ( isset( $user ) && $user != '' ) {
         // muestra la plantilla
         return $app['twig']->render('Users/users.list.html.twig', array(
-          'user' => $user
+          'user' => $user,
+          'users' => $users
         ));
 
       } else {
@@ -35,6 +37,9 @@ class UsersController implements ControllerProviderInterface
 
     // hace un bind
     })->bind('users-list');
+    
+    
+    
 
     // la ruta "/users/edit"
     $controller->get('/edit', function() use($app) {
@@ -57,6 +62,34 @@ class UsersController implements ControllerProviderInterface
     // hace un bind
     })->bind('users-edit');
 
+    
+    
+    
+    
+    
+    
+    // la ruta "/users/edit"
+    $controller->post('/edit', function(Request $request) use($app) {
+    	
+    	$users = $app['session']->get('users');
+    	$users[] = array (
+    			'nombre' => $request->get('nombre'),
+    			'apellido' => $request->get('apellido'),
+    			'direccion' => $request->get('direccion'),
+    			'email' => $request->get('email'),
+    			'telefono' => $request->get('telefono')
+    	);
+    	
+    	$app['session']->set('users',$users);
+    	
+    	// redirige el navegador a "/login"
+    	return $app->redirect( $app['url_generator']->generate('users-list'));
+    
+    	// hace un bind
+    })->bind('users-do-edit');
+    
+    
+    
     return $controller;
   }
 
