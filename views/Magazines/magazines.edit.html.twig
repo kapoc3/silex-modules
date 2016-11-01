@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Editar Usuario' %}
+
+{% block body %}
+
+<form class="form-horizontal" method="post" action="{{ url('magazines-do-edit') }}">
+  <fieldset>
+
+    <!-- Titulo -->
+    <legend>Crear o Editar Revista</legend>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">Nombre</label>
+      <div class="col-md-4">
+        <input type="text" class="form-control input-md"
+            name="nombre" placeholder="nombre de la revista" required="">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">Ano</label>
+      <div class="col-md-4">
+        <input type="text" class="form-control input-md"
+            name="ano" placeholder="Ano de publicacion" required="">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">Tema</label>
+      <div class="col-md-4">
+        <input type="text" class="form-control input-md"
+            name="tema" placeholder="Tema de la revista" required="">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">Editorial</label>
+      <div class="col-md-4">
+        <input type="text" class="form-control input-md"
+            name="editorial" placeholder="Casa editorial" required="">
+      </div>
+    </div>
+    
+    <!-- Botones -->
+    <div class="form-group">
+      <div class="col-md-8">
+        <div class="pull-right">
+          <button class="btn btn-primary">Guardar</button>
+          <button class="btn btn-primary">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+</form>
+
+
+{% endblock %}

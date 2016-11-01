@@ -27,6 +27,7 @@ $app->get('/', function() use($app) {
 
 $app->mount('login', new App\Login\LoginController());
 $app->mount('/users', new App\Users\UsersController());
+$app->mount('/magazines', new App\Magazines\MagazinesController());
 
 // Corre la Aplicación
 // ===================

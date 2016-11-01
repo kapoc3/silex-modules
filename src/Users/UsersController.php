@@ -62,12 +62,6 @@ class UsersController implements ControllerProviderInterface
     // hace un bind
     })->bind('users-edit');
 
-    
-    
-    
-    
-    
-    
     // la ruta "/users/edit"
     $controller->post('/edit', function(Request $request) use($app) {
     	
